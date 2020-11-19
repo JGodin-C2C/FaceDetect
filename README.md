@@ -1,12 +1,9 @@
-Run the code like this:
+# I want a mustache. 
 
-*python face_detect.py abba.png*
+The script live.py allows to add a fancy mustache to all your faces available on
+the webcam. You do not have to take care about this facial attribute anymore,
+let your computer do it for you ! 
 
-If you want to understand how the code works, the details are here:
-
-https://realpython.com/blog/python/face-recognition-with-python/
+Get fancy on these zoom meetings ! 
 
 
-Update: Now supports OpenCV3. This change has been made by furetosan ( https://github.com/furetosan) and tested on Linux.
-
-To run the OpenCV3 version, run facedetect_cv3.py.
