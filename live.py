@@ -32,11 +32,13 @@ while(True):
   alpha_l = 1.0 - alpha_s   # invert b/w
   # extract size
   (wH, wW) = mustache.shape[:2]
-  # Draw for each layer
+  xoffset = 20
+  yoffset = 90
+# Draw for each layer
   for (x, y, w, h) in faces:
     for c in range(0,3):
       try:
-        frame[y  + 90 :y + wH + 90, x + 20 :x + wW + 20, c] =  (alpha_s * mustache[:, :, c] + alpha_l * frame[y  + 90 :y + wH + 90, x + 20 :x + wW + 20, c])
+        frame[y + yoffset :y + wH + yoffset, x + xoffset  :x + wW + xoffset , c] =  (alpha_s * mustache[:, :, c] + alpha_l * frame[y  + yoffset :y + wH + yoffset, x + xoffset :x + wW + xoffset, c])
       except:
         continue
 
