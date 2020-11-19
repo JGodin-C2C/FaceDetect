@@ -6,4 +6,9 @@ let your computer do it for you !
 
 Get fancy on these zoom meetings ! 
 
+# How-to.
 
+```
+pip install opencv-python
+python live.py
+```
