@@ -27,19 +27,27 @@ while(True):
     #flags = cv2.CV_HAAR_SCALE_IMAGE
   )
 
-  mustache = cv2.imread('mustache.png', cv2.IMREAD_UNCHANGED)
+  mustache = cv2.imread('redhat.png', cv2.IMREAD_UNCHANGED)
   alpha_s = mustache[:,:,3]/255.0 # extract it
   alpha_l = 1.0 - alpha_s   # invert b/w
-  # extract size
   (wH, wW) = mustache.shape[:2]
-  # Draw for each layer
+#  (B, G, R, A) = cv2.split(mustache)
+#  B = cv2.bitwise_and(B, B, mask=A)
+#  G = cv2.bitwise_and(G, G, mask=A)
+#  R = cv2.bitwise_and(R, R, mask=A)
+#  mustache = cv2.merge([B, G, R, A])
+  # Draw a rectangle around the faces
+  #
+  xoffset = 50
+  yoffset = - 100
   for (x, y, w, h) in faces:
     for c in range(0,3):
       try:
-        frame[y  + 90 :y + wH + 90, x + 20 :x + wW + 20, c] =  (alpha_s * mustache[:, :, c] + alpha_l * frame[y  + 90 :y + wH + 90, x + 20 :x + wW + 20, c])
+        frame[y + yoffset :y + wH + yoffset, x + xoffset  :x + wW + xoffset , c] =  (alpha_s * mustache[:, :, c] + alpha_l * frame[y  + yoffset :y + wH + yoffset, x + xoffset :x + wW + xoffset, c])
       except:
         continue
 
+#      frame = cv2.addWeighted(frame,0.5,frame,1,0,frame)
   # Display the resulting frame
   cv2.imshow('frame', frame)
   if cv2.waitKey(1) & 0xFF == ord('q'):
